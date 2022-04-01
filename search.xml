@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>test</title>
+    <url>/2022/04/01/test/</url>
+    <content><![CDATA[<p><img src="http://heucommunity.club/%E5%81%8F%E5%90%91%E9%94%81.png"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>redis 数据结构</title>
     <url>/2022/04/01/redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<h1 id="Redis-底层数据结构"><a href="#Redis-底层数据结构" class="headerlink" title="Redis 底层数据结构"></a>Redis 底层数据结构</h1><p><img src="http://heucommunity.club/JavaBlog/Snipaste_2022-03-23_13-02-14.png"></p>
+    <content><![CDATA[<meta name="referrer" content="no-referrer" />
+
+<h1 id="Redis-底层数据结构"><a href="#Redis-底层数据结构" class="headerlink" title="Redis 底层数据结构"></a>Redis 底层数据结构</h1><p><img src="http://heucommunity.club/JavaBlog/Snipaste_2022-03-23_13-02-14.png"></p>
 <h2 id="Redis-的键和值用什么结构组织的呢？"><a href="#Redis-的键和值用什么结构组织的呢？" class="headerlink" title="Redis 的键和值用什么结构组织的呢？"></a>Redis 的键和值用什么结构组织的呢？</h2><p>为了实现键和值的快速访问，Redis 采用了一个哈希表来存储所有的键值对。一个哈希表就是一个数组，数组的每个元素称为一个哈希桶。哈<strong>希桶中保存的并不是数据本身，而是指向具体值的指针</strong>。所以不管是 String 还是集合，哈希桶的元素都是指向他们的指针。</p>
 <p><img src="http://heucommunity.club/JavaBlog/Snipaste_2022-03-23_13-12-47.png"></p>
 <h2 id="Redis-的-rehash操作"><a href="#Redis-的-rehash操作" class="headerlink" title="Redis 的 rehash操作"></a>Redis 的 rehash操作</h2><p>虽然 Redis 使用拉链法解决哈希冲突，但是随着哈希冲突越来越多，会导致拉链过长，进而导致这条链上的元素过多，增加查找耗时。所以 Redis 会对哈希表进行 rehash 操作来增加现有的哈希桶的数量。</p>
@@ -212,11 +220,5 @@
       <tags>
         <tag>sychronized</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>test</title>
-    <url>/2022/04/01/test/</url>
-    <content><![CDATA[<p><img src="http://heucommunity.club/%E5%81%8F%E5%90%91%E9%94%81.png"></p>
-]]></content>
   </entry>
 </search>
