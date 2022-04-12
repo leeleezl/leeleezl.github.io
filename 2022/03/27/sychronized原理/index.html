@@ -28,15 +28,15 @@
 <meta property="og:site_name" content="栗子">
 <meta property="og:description" content="Monitor 被翻译成**监视器**或**管程**，每个 Java 对象都可以关联一个 Monitor 对象，如果使用 synchronized 给对象上锁，那么该对象头的Mark Word 就被设置指向 Monitor 对象的指针。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/Monitor%E7%BB%93%E6%9E%84.png">
-<meta property="og:image" content="http://example.com/images/%E5%81%8F%E5%90%91%E9%94%81.png">
-<meta property="og:image" content="http://example.com/images/%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81.png">
+<meta property="og:image" content="https://codingroad.club/Monitor%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="https://codingroad.club/%E5%81%8F%E5%90%91%E9%94%81.png">
+<meta property="og:image" content="https://codingroad.club/%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81.png">
 <meta property="article:published_time" content="2022-03-27T05:36:59.000Z">
-<meta property="article:modified_time" content="2022-03-27T06:06:15.889Z">
+<meta property="article:modified_time" content="2022-04-12T11:13:11.914Z">
 <meta property="article:author" content="leeleezl">
 <meta property="article:tag" content="sychronized">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/Monitor%E7%BB%93%E6%9E%84.png">
+<meta name="twitter:image" content="https://codingroad.club/Monitor%E7%BB%93%E6%9E%84.png">
 
 <link rel="canonical" href="http://example.com/2022/03/27/sychronized%E5%8E%9F%E7%90%86/">
 
@@ -216,10 +216,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-03-27 13:36:59 / 修改时间：14:06:15" itemprop="dateCreated datePublished" datetime="2022-03-27T13:36:59+08:00">2022-03-27</time>
+              <time title="创建时间：2022-03-27 13:36:59" itemprop="dateCreated datePublished" datetime="2022-03-27T13:36:59+08:00">2022-03-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-12 19:13:11" itemprop="dateModified" datetime="2022-04-12T19:13:11+08:00">2022-04-12</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -266,7 +272,7 @@
         <h1 id="synchronized-原理"><a href="#synchronized-原理" class="headerlink" title="synchronized 原理"></a>synchronized 原理</h1><h2 id="Monitor-原理"><a href="#Monitor-原理" class="headerlink" title="Monitor 原理"></a>Monitor 原理</h2><p>我们先来看一下什么是 Monitor ？</p>
 <p>Monitor 被翻译成<strong>监视器</strong>或<strong>管程</strong>，每个 Java 对象都可以关联一个 Monitor 对象，如果使用 synchronized 给对象上锁，那么该对象头的Mark Word 就被设置指向 Monitor 对象的指针。 </p>
 <p>Monitor 的结构如下：</p>
-<p><img src="/images/Monitor%E7%BB%93%E6%9E%84.png"></p>
+<p><img src="https://codingroad.club/Monitor%E7%BB%93%E6%9E%84.png"></p>
 <ul>
 <li>刚开始 Monitor 的 Owner 为null</li>
 <li>当 Thread-2 执行 sychronized(Obj) 时，Monitor 的 Owner 会设置为 Thread-2，Monitor 中只能有一个 Owner</li>
@@ -319,7 +325,7 @@
 <h3 id="偏向锁-1"><a href="#偏向锁-1" class="headerlink" title="偏向锁"></a>偏向锁</h3><p>一句话总结它的作用：<strong>减少同一线程获取锁的代价</strong>。在大多数情况下，锁不存在多线程竞争，总是由同一线程多次获得，那么此时就是偏向锁。</p>
 <p><strong>核心思想：</strong></p>
 <p>如果一个线程获得了锁，那么锁就进入偏向模式，此时<code>Mark Word</code>的结构也就变为偏向锁结构，<strong>当该线程再次请求锁时，无需再做任何同步操作，即获取锁的过程只需要检查</strong><code>Mark Word</code><strong>的锁标记位为偏向锁以及当前线程ID等于</strong><code>Mark Word</code><strong>的ThreadID即可</strong>，这样就省去了大量有关锁申请的操作</p>
-<p><img src="/images/%E5%81%8F%E5%90%91%E9%94%81.png"></p>
+<p><img src="https://codingroad.club/%E5%81%8F%E5%90%91%E9%94%81.png"></p>
 <h3 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h3><p>应用场景：如果一个对象有多线程要加锁，但是加锁时间是错开始（也就是没有竞争），那么可以使用轻量级锁来优化。</p>
 <p>假设有两个方法同步块，利用同一个对象加锁</p>
 <ul>
@@ -338,7 +344,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/images/%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81.png"></p>
+<p><img src="https://codingroad.club/%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81.png"></p>
 
     </div>
 
@@ -438,7 +444,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -451,7 +457,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -488,13 +494,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">15k</span>
+    <span title="站点总字数">17k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">14 分钟</span>
+    <span title="站点阅读时长">16 分钟</span>
 </div>
 <!--
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
